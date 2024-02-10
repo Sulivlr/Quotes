@@ -11,3 +11,7 @@ export interface Quote extends ApiQuote {
 export interface ApiQuotes {
   [id: string]: ApiQuote;
 }
+
+interface Props {
+  addQuote: (quote: Quote) => void;
+}
