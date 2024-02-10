@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Props} from '../../types';
 
 
-const QuoteForm: React.FC<Props> = ({addQuote}) => {
+const QuoteForm: React.FC<Props> = ({addQuote, deleteQuote}) => {
   const [author, setAuthor] = useState('');
   const [category, setCategory] = useState('');
   const [text, setText] = useState('');
@@ -19,12 +19,16 @@ const QuoteForm: React.FC<Props> = ({addQuote}) => {
     setText('');
   };
 
+  const Delete = () => {
+    deleteQuote();
+  }
+
   return (
     <form onSubmit={Submit}>
       <div>
         <label className="form-label">
           Author:
-          <input className="form-control" type="text" value={author} onChange={(e) => setAuthor(e.target.value)}/>
+          <input className="form-control" type="text" required value={author} onChange={(e) => setAuthor(e.target.value)}/>
         </label>
       </div>
       <div>
@@ -47,7 +51,8 @@ const QuoteForm: React.FC<Props> = ({addQuote}) => {
           <textarea value={text} onChange={(e) => setText(e.target.value)}/>
         </label>
       </div>
-      <button type="submit">Save</button>
+      <button className="btn btn-primary m-2" type="submit">Save</button>
+      <button className="btn btn-danger" type="button" onClick={Delete}>Delete</button>
     </form>
   );
 };

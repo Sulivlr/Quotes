@@ -14,4 +14,5 @@ export interface ApiQuotes {
 
 interface Props {
   addQuote: (quote: Quote) => void;
+  deleteQuote: () => void;
 }
